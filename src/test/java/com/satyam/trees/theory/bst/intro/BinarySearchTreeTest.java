@@ -1,8 +1,6 @@
-package com.satyam.trees.theory.bst;
+package com.satyam.trees.theory.bst.intro;
 
 import org.junit.jupiter.api.Test;
-
-import com.satyam.trees.theory.bst.intro.BinarySearchTree;
 
 import static org.junit.jupiter.api.Assertions.*;
 
