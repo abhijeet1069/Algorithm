@@ -6,6 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTreeTest {
 
+    /**
+              10
+        5		    15
+     3		8	 12		20
+     * */
+
     @Test
     void testInsert() {
         BinarySearchTree bst = new BinarySearchTree();
