@@ -2,8 +2,8 @@ package com.satyam.trees.leetcode.sample;
 
 public class TreeNode {
 	int val;
-	TreeNode left;
-	TreeNode right;
+	public TreeNode left;
+	public TreeNode right;
 	
 	TreeNode(){}
 	
@@ -16,5 +16,4 @@ public class TreeNode {
 		this.left = left;
 		this.right = right;
 	}
-
 }
