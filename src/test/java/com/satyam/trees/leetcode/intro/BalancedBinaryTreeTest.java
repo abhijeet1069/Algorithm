@@ -1,7 +1,5 @@
 package com.satyam.trees.leetcode.intro;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,6 +8,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import com.satyam.trees.leetcode.sample.TreeBuilder;
 import com.satyam.trees.leetcode.sample.TreeNode;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BalancedBinaryTreeTest {
 
