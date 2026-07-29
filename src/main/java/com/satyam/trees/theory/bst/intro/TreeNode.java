@@ -1,4 +1,4 @@
-package com.satyam.trees.theory.bst;
+package com.satyam.trees.theory.bst.intro;
 
 class TreeNode {
     int data;

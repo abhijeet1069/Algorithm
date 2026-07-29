@@ -1,4 +1,4 @@
-package com.satyam.trees.theory.bst;
+package com.satyam.trees.theory.bst.intro;
 
 public class BinarySearchTree {
     private TreeNode root;

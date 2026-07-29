@@ -38,7 +38,7 @@ A binary tree is a tree where every node has at most two children.
       D   E
 ```
 
-- Complete binary tree : Filled left to right
+- Complete binary tree : A complete binary tree is a special type of tree where every level is fully filled with nodes, except possibly the last level, which must be filled from left to right
 
 ```shell
       A
