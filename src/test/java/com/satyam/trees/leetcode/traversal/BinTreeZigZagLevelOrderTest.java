@@ -1,4 +1,4 @@
-package com.satyam.trees.theory.bst.traversal;
+package com.satyam.trees.leetcode.traversal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,25 +13,26 @@ import org.junit.jupiter.params.provider.MethodSource;
 import com.satyam.trees.leetcode.sample.TreeBuilder;
 import com.satyam.trees.leetcode.sample.TreeNode;
 
-class InorderTraversalTest {
+class BinTreeZigZagLevelOrderTest {
 
-    @ParameterizedTest
+	@ParameterizedTest
     @MethodSource("testData")
-    void testInorderTraversal(List<Integer> expected, Integer[] input) {
+    void testZigzagLevelOrder(List<Integer> expected, Integer[] input) {
         TreeNode root = TreeBuilder.build(input);
-        assertEquals(expected, new InorderTraversal().inorderTraversal(root));
+        assertEquals(expected, new BinTreeZigZagLevelOrder().zigzagLevelOrder(root));
     }
-
-    private static Stream<Arguments> testData(){
+	
+	private static Stream<Arguments> testData(){
         return Stream.of(
                 Arguments.of(
-                        Arrays.asList(1,3,2),
-                        (Object) new Integer[] {1,null,2,3}
+                		Arrays.asList(Arrays.asList(3),Arrays.asList(20,9),Arrays.asList(15,7)),
+                        (Object) new Integer[] {3,9,20,null,null,15,7}
                 ),
                 Arguments.of(
-                        Arrays.asList(4,2,6,5,7,1,3,9,8),
-                        (Object) new Integer[] {1,2,3,4,5,null,8,null,null,6,7,9}
+                		Arrays.asList(Arrays.asList(1)),
+                        (Object) new Integer[] {1}
                 )
         );
     }
+
 }
