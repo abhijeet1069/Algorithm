@@ -9,9 +9,13 @@ each pattern before moving to the next.
 
   Problem                               LeetCode
   ------------------------------------- ----------
-  Two Sum                               1
-  Remove Duplicates from Sorted Array   26
-  Remove Element                        27
+  Two Sum                               Use a HashMap to store array elements
+  										then lookup for previous inserted HashMap elements
+  										
+  Remove Duplicates from Sorted Array   Don't focus on duplicates but on unique items
+  
+  Remove Element                        Here, also focus on unique elements, no treatment given to duplicates
+  										They were simply over-written
   Merge Sorted Array                    88
   Find Pivot Index                      724
   Best Time to Buy and Sell Stock       121
