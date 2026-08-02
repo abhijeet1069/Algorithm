@@ -7,32 +7,48 @@ each pattern before moving to the next.
 
 ## Phase 1: Array Fundamentals
 
-  Problem                               LeetCode
-  ------------------------------------- ----------
-  Two Sum                               Use a HashMap to store array elements
-  										then lookup for previous inserted HashMap elements
-  										
-  Remove Duplicates from Sorted Array   Don't focus on duplicates but on unique items
-  
-  Remove Element                        Here, also focus on unique elements, no treatment given to duplicates
-  										They were simply over-written
-  Merge Sorted Array                    88
-  Find Pivot Index                      724
-  Best Time to Buy and Sell Stock       121
+### Two Sum
+Use a HashMap to store array elements then lookup for previous inserted HashMap elements
 
+###  Remove Duplicates from Sorted Array
+Don't focus on duplicates but on unique items
+
+### Remove Element
+Here, also focus on unique elements, no treatment given to duplicates. They were simply over-written
+
+### Merge Sorted Array                    
+Use the standard merging approach in merge sort, some people are appending 2nd array in nums1 
+and simply sorting it
+
+### Find Pivot Index                        
+Compute left sum, right sum. Check index where both are equal else return -1
+
+### Best Time to Buy and Sell Stock
+
+```java
+profit = 0, minCost = cost at day 0
+for each day starting from 1, compute,
+    profit = Math.max(profit,prices[i] - minCost); //maximise the profit
+    minCost = Math.min(minCost,prices[i]); //minimise the cost
+return profit
+```
 ------------------------------------------------------------------------
 
 ## Phase 2: Two Pointers
 
-  Problem                              LeetCode
-  ------------------------------------ ----------
-  Valid Palindrome                     125
-  Two Sum II - Input Array Is Sorted   167
-  Move Zeroes                          283
-  Squares of a Sorted Array            977
-  Container With Most Water            11
-  3Sum                                 15
-  4Sum (Optional)                      18
+### Valid Palindrome
+
+### Two Sum II - Input Array Is Sorted
+
+###  Move Zeroes
+
+###  Squares of a Sorted Array
+
+###  Container With Most Water
+
+###  3Sum
+
+###  4Sum (Optional)
 
 ------------------------------------------------------------------------
 
