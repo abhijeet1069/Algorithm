@@ -16,6 +16,20 @@ Don't focus on duplicates but on unique items
 ### Remove Element
 Here, also focus on unique elements, no treatment given to duplicates. They were simply over-written
 
+```java
+public int removeElement(int[] nums, int val) {
+        int j = 0;
+        
+        for(int i = 0; i < nums.length; i++) {
+        	if(nums[i] != val) {
+        		nums[j] = nums[i];
+        		j++;
+        	}
+        }
+        return j;
+    }
+```
+
 ### Merge Sorted Array                    
 Use the standard merging approach in merge sort, some people are appending 2nd array in nums1 
 and simply sorting it
@@ -36,13 +50,31 @@ return profit
 
 ## Phase 2: Two Pointers
 
+Main remembering point is how to normalise the string
+
 ### Valid Palindrome
+
+```shell
+# removes all non alphanumeric characters in a string
+s.replaceAll("[^a-zA-Z0-9]", "")
+```
+Remaining problem, is to place left and right pointer at end of the string,
+then keep comparing the characters till l < r
 
 ### Two Sum II - Input Array Is Sorted
 
+In a sorted array, mark l and r pointers to both ends.
+For ex : [2,7,11,15] as l right moves arr[l]+arr[r] increases, however as you move r left
+the sum decreases
+
 ###  Move Zeroes
 
+The question was very similar to remove element, except here the ignored array part is filled with zeros
+
 ###  Squares of a Sorted Array
+
+Mark l and r at two ends of array. while l <= r, compare the absolute values of array elements
+at both indices, insert square of the higher values from back of the result array
 
 ###  Container With Most Water
 

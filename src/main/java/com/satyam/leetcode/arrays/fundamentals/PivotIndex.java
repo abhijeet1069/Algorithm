@@ -1,4 +1,4 @@
-package com.satyam.arrays.leetcode;
+package com.satyam.leetcode.arrays.fundamentals;
 
 public class PivotIndex {
     public int pivotIndex(int[] nums) {

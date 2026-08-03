@@ -1,4 +1,4 @@
-package com.satyam.arrays.leetcode;
+package com.satyam.leetcode.arrays.fundamentals;
 
 public class MergeSortedArrays {
     public void merge(int[] nums1, int m, int[] nums2, int n) {

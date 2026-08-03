@@ -1,4 +1,4 @@
-package com.satyam.arrays.leetcode;
+package com.satyam.leetcode.arrays.fundamentals;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
