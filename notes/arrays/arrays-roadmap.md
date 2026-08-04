@@ -5,10 +5,19 @@ each pattern before moving to the next.
 
 ------------------------------------------------------------------------
 
+## Key ideas
+
+- For 2 sum approach, in a sorted array for 2 pointer left and right, moving left pointer increases the sum of array.
+  And moving right pointer decreases the sum of array.
+
+- For 2 sum approach, in an unsorted array, use hashmap to store the indices.
+
 ## Phase 1: Array Fundamentals
 
 ### Two Sum
 Use a HashMap to store array elements then lookup for previous inserted HashMap elements
+Here indices of elements had to be returned, so array wasn't stored, however if the array was sorted
+we could had easily used 2 pointer approach.
 
 ###  Remove Duplicates from Sorted Array
 Don't focus on duplicates but on unique items
@@ -78,7 +87,43 @@ at both indices, insert square of the higher values from back of the result arra
 
 ###  Container With Most Water
 
+Try to use two-pointers. Set one pointer to the left and one to the right of the array. Always move the pointer 
+that points to the lower height. And that height makes the current area. Then find the max area
+
 ###  3Sum
+
+```java
+public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+
+        for(int i = 0;i < nums.length-2; i++){
+            if(i > 0 && nums[i] == nums[i-1])
+                continue;
+
+            int left = i+1;
+            int right = nums.length-1;
+
+            while(left < right){
+                int sum = nums[i] + nums[left] + nums[right];
+                if(sum == 0){
+                    result.add(Arrays.asList(nums[i],nums[left],nums[right]));
+                    while(left < right && nums[left] == nums[left+1]) //skip duplicates
+                        left++;
+                    while(left < right && nums[right] == nums[right-1]) //skip 
+                        right--;
+                    left++;
+                    right--;
+                }
+                else if(sum < 0)
+                    left++; //increses the sum
+                else
+                    right--; // decreases the sum
+            }
+        }
+        return result;
+    }
+```
 
 ###  4Sum (Optional)
 

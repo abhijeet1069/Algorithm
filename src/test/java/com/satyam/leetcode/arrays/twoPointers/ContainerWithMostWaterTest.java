@@ -9,24 +9,23 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MoveZeroesTest {
+class ContainerWithMostWaterTest {
 
     @ParameterizedTest
     @MethodSource("testData")
-    void testMoveZeroes(int[] expected, int[] nums) {
-        new MoveZeroes().moveZeroes(nums);
-        assertArrayEquals(expected, nums);
+    void testMaxArea(int expected, int[] height) {
+        assertEquals(expected, new ContainerWithMostWater().maxArea(height));
     }
 
     private static Stream<Arguments> testData(){
         return Stream.of(
                 Arguments.of(
-                        new int[] {1,3,12,0,0},
-                        new int[]{0,1,0,3,12}
+                        49,
+                        new int[]{1,8,6,2,5,4,8,3,7}
                 ),
                 Arguments.of(
-                        new int[] {0},
-                        new int[]{0}
+                        1,
+                        new int[]{1,1}
                 )
         );
     }
