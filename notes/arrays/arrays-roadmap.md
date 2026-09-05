@@ -129,36 +129,139 @@ public List<List<Integer>> threeSum(int[] nums) {
 
 ------------------------------------------------------------------------
 
-## Phase 3: Sliding Window
+## Phase 3: Sliding Window (weak topic)
 
 ### Fixed Window
 
-  Problem                                                   LeetCode
-  --------------------------------------------------------- ----------
-  Maximum Average Subarray I                                643
-  Maximum Sum Circular Subarray *(Optional after Kadane)*   918
+### Maximum Average Subarray I     
+
+```java
+public double findMaxAverage(int[] nums, int k) {
+        int currSum = 0;
+        //calculate inital window sum
+        for(int i = 0; i < k; i++)
+            currSum += nums[i];
+        
+        int maxSum = currSum;
+        //better optimised loop. The loop which I used had l and r, which was not required
+        for(int i=k;i<nums.length;i++) {
+            currSum -= nums[i-k];
+            currSum += nums[i];
+            maxSum = Math.max(maxSum,currSum);
+        }
+        return (double)maxSum/k;
+    }
+```
+
+### Maximum Sum Circular Subarray *(Optional after Kadane)*
 
 ### Variable Window
 
-  Problem                                          LeetCode
-  ------------------------------------------------ ----------
-  Longest Substring Without Repeating Characters   3
-  Minimum Size Subarray Sum                        209
-  Fruit Into Baskets                               904
-  Longest Repeating Character Replacement          424
-  Minimum Window Substring                         76
+### Longest Substring Without Repeating Characters
 
-------------------------------------------------------------------------
+```java
+// This can also be used for lookup for all chars, int charIndex[] = new int[128];
+public int lengthOfLongestSubstring(String s) {
+        if(s.isEmpty())
+            return 0;
+        int L = 0, maxLen = -1;
+        Set<Character> set = new HashSet<>();
+        for(int R = 0; R < s.length(); R++){
+            char curr = s.charAt(R);
+            while(set.contains(curr)){
+                set.remove(s.charAt(L));
+                L++;
+            }
+            maxLen = Math.max(maxLen,R-L+1);
+            set.add(curr);
+        }
+        return maxLen;
+    }
+```
+
+###  Minimum Size Subarray Sum
+
+This template is very common in sliding window problems
+```java
+public static int minSubArrayLen(int target, int[] nums) {
+        int left = 0;
+        int sum = 0;
+        int minLen = Integer.MAX_VALUE;
+
+        for (int right = 0; right < nums.length; right++) {
+            sum += nums[right]; //expand window
+
+            while (sum >= target) { //constraint violated, shrink till valid
+                minLen = Math.min(minLen, right - left + 1);
+                sum -= nums[left];
+                left++;
+            }
+        }
+
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    }
+```
+
+###  Fruit Into Baskets
+
+```java
+public int totalFruit(int[] fruits) {
+        int l = 0;
+        Map<Integer,Integer> basket = new HashMap<>();
+        int maxSum = 0;
+        for(int r = 0; r < fruits.length; r++){
+            basket.put(fruits[r],basket.getOrDefault(fruits[r],0)+1);
+
+            while(basket.size() > 2){
+                //This the critical part, I was removing entire left fruit. But it has to be decremented by 1
+                basket.put(fruits[l], basket.get(fruits[l]) - 1);
+                if (basket.get(fruits[l]) == 0) {
+                    basket.remove(fruits[l]);
+                }
+                l++;
+            }
+            maxSum = Math.max(maxSum,r-l+1);
+        }
+        return maxSum;
+    }
+```
+
+###  Longest Repeating Character Replacement
+
+```java
+public int characterReplacement(String s, int k) {
+        int left = 0, maxFreq = 0, answer = 0;
+        int[] freqMap = new int[26];
+
+        for(int right = 0; right < s.length(); right++){
+            char currentChar = s.charAt(right);
+            freqMap[currentChar-'A']++;
+            maxFreq = Math.max(maxFreq,freqMap[currentChar-'A']);
+
+            while((right-left+1)-maxFreq > k){
+                freqMap[s.charAt(left)-'A']--;
+                left++;
+            }
+            answer = Math.max(answer,(right-left+1));
+        }
+        return answer;
+    }
+```
+
+###  Minimum Window Substring
+
 
 ## Phase 4: Prefix Sum
 
-  Problem                        LeetCode
-  ------------------------------ ----------
-  Range Sum Query - Immutable    303
-  Subarray Sum Equals K          560
-  Continuous Subarray Sum        523
-  Product of Array Except Self   238
-  Find Pivot Index               724
+###  Range Sum Query - Immutable  
+
+###  Subarray Sum Equals K 
+
+###  Continuous Subarray Sum
+
+###  Product of Array Except Self
+
+###  Find Pivot Index
 
 ------------------------------------------------------------------------
 
