@@ -1,61 +1,4 @@
-# Arrays Roadmap (Pattern-Based)
-
-This roadmap is organized by techniques rather than difficulty. Master
-each pattern before moving to the next.
-
-------------------------------------------------------------------------
-
-## Key ideas
-
-- For 2 sum approach, in a sorted array for 2 pointer left and right, moving left pointer increases the sum of array.
-  And moving right pointer decreases the sum of array.
-
-- For 2 sum approach, in an unsorted array, use hashmap to store the indices.
-
-## Phase 1: Array Fundamentals
-
-### Two Sum
-Use a HashMap to store array elements then lookup for previous inserted HashMap elements
-Here indices of elements had to be returned, so array wasn't stored, however if the array was sorted
-we could had easily used 2 pointer approach.
-
-###  Remove Duplicates from Sorted Array
-Don't focus on duplicates but on unique items
-
-### Remove Element
-Here, also focus on unique elements, no treatment given to duplicates. They were simply over-written
-
-```java
-public int removeElement(int[] nums, int val) {
-        int j = 0;
-        
-        for(int i = 0; i < nums.length; i++) {
-        	if(nums[i] != val) {
-        		nums[j] = nums[i];
-        		j++;
-        	}
-        }
-        return j;
-    }
-```
-
-### Merge Sorted Array                    
-Use the standard merging approach in merge sort, some people are appending 2nd array in nums1 
-and simply sorting it
-
-### Find Pivot Index                        
-Compute left sum, right sum. Check index where both are equal else return -1
-
-### Best Time to Buy and Sell Stock
-
-```java
-profit = 0, minCost = cost at day 0
-for each day starting from 1, compute,
-    profit = Math.max(profit,prices[i] - minCost); //maximise the profit
-    minCost = Math.min(minCost,prices[i]); //minimise the cost
-return profit
-```
-------------------------------------------------------------------------
+# Arrays Roadmap
 
 ## Phase 2: Two Pointers
 
@@ -182,6 +125,7 @@ public int lengthOfLongestSubstring(String s) {
 ###  Minimum Size Subarray Sum
 
 This template is very common in sliding window problems
+
 ```java
 public static int minSubArrayLen(int target, int[] nums) {
         int left = 0;
