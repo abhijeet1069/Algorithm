@@ -1,322 +1,196 @@
-# Arrays Roadmap
+# Recommended Learning Order
 
-## Phase 2: Two Pointers
+Don't necessarily solve them in numerical order. Study them by pattern.
 
-Main remembering point is how to normalise the string
+## 1. HashMap / HashSet
 
-### Valid Palindrome
+- [ ] **1. Two Sum**
+- [ ] **217. Contains Duplicate**
+- [ ] **169. Majority Element**
+- [ ] **349. Intersection of Two Arrays**
+- [ ] **350. Intersection of Two Arrays II**
+- [ ] **128. Longest Consecutive Sequence**
+- [ ] **49. Group Anagrams**
 
-```shell
-# removes all non alphanumeric characters in a string
-s.replaceAll("[^a-zA-Z0-9]", "")
-```
-Remaining problem, is to place left and right pointer at end of the string,
-then keep comparing the characters till l < r
+---
 
-### Two Sum II - Input Array Is Sorted
+## 2. Basic Array Manipulation
 
-In a sorted array, mark l and r pointers to both ends.
-For ex : [2,7,11,15] as l right moves arr[l]+arr[r] increases, however as you move r left
-the sum decreases
+- [ ] **26. Remove Duplicates from Sorted Array**
+- [ ] **27. Remove Element**
+- [ ] **283. Move Zeroes**
+- [ ] **189. Rotate Array**
+- [ ] **88. Merge Sorted Array**
 
-###  Move Zeroes
+---
 
-The question was very similar to remove element, except here the ignored array part is filled with zeros
+## 3. Two Pointers
 
-###  Squares of a Sorted Array
+- [ ] **167. Two Sum II**
+- [ ] **977. Squares of a Sorted Array**
+- [ ] **11. Container With Most Water**
+- [ ] **15. 3Sum**
+- [ ] **18. 4Sum**
 
-Mark l and r at two ends of array. while l <= r, compare the absolute values of array elements
-at both indices, insert square of the higher values from back of the result array
+### Important milestone
 
-###  Container With Most Water
+**15. 3Sum**
 
-Try to use two-pointers. Set one pointer to the left and one to the right of the array. Always move the pointer 
-that points to the lower height. And that height makes the current area. Then find the max area
+Understand this structure:
 
-###  3Sum
-
-```java
-public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);
-
-        for(int i = 0;i < nums.length-2; i++){
-            if(i > 0 && nums[i] == nums[i-1])
-                continue;
-
-            int left = i+1;
-            int right = nums.length-1;
-
-            while(left < right){
-                int sum = nums[i] + nums[left] + nums[right];
-                if(sum == 0){
-                    result.add(Arrays.asList(nums[i],nums[left],nums[right]));
-                    while(left < right && nums[left] == nums[left+1]) //skip duplicates
-                        left++;
-                    while(left < right && nums[right] == nums[right-1]) //skip 
-                        right--;
-                    left++;
-                    right--;
-                }
-                else if(sum < 0)
-                    left++; //increses the sum
-                else
-                    right--; // decreases the sum
-            }
-        }
-        return result;
-    }
+```text
+sort
+  ↓
+fix one element
+  ↓
+two pointers for the remaining two
 ```
 
-###  4Sum (Optional)
+---
 
-------------------------------------------------------------------------
+## 4. Prefix Sum
 
-## Phase 3: Sliding Window (weak topic)
+- [ ] **724. Find Pivot Index**
+- [ ] **303. Range Sum Query - Immutable**
+- [ ] **560. Subarray Sum Equals K**
+- [ ] **525. Contiguous Array**
+- [ ] **238. Product of Array Except Self**
+
+---
+
+## 5. Sliding Window
 
 ### Fixed Window
 
-### Maximum Average Subarray I     
-
-```java
-public double findMaxAverage(int[] nums, int k) {
-        int currSum = 0;
-        //calculate inital window sum
-        for(int i = 0; i < k; i++)
-            currSum += nums[i];
-        
-        int maxSum = currSum;
-        //better optimised loop. The loop which I used had l and r, which was not required
-        for(int i=k;i<nums.length;i++) {
-            currSum -= nums[i-k];
-            currSum += nums[i];
-            maxSum = Math.max(maxSum,currSum);
-        }
-        return (double)maxSum/k;
-    }
-```
-
-### Maximum Sum Circular Subarray *(Optional after Kadane)*
+- [ ] **643. Maximum Average Subarray I**
 
 ### Variable Window
 
-### Longest Substring Without Repeating Characters
+- [ ] **209. Minimum Size Subarray Sum**
+- [ ] **1004. Max Consecutive Ones III**
+- [ ] **904. Fruit Into Baskets**
+- [ ] **3. Longest Substring Without Repeating Characters**
 
-```java
-// This can also be used for lookup for all chars, int charIndex[] = new int[128];
-public int lengthOfLongestSubstring(String s) {
-        if(s.isEmpty())
-            return 0;
-        int L = 0, maxLen = -1;
-        Set<Character> set = new HashSet<>();
-        for(int R = 0; R < s.length(); R++){
-            char curr = s.charAt(R);
-            while(set.contains(curr)){
-                set.remove(s.charAt(L));
-                L++;
-            }
-            maxLen = Math.max(maxLen,R-L+1);
-            set.add(curr);
-        }
-        return maxLen;
-    }
+---
+
+## 6. Kadane / Running State
+
+- [ ] **121. Best Time to Buy and Sell Stock**
+- [ ] **53. Maximum Subarray**
+- [ ] **918. Maximum Sum Circular Subarray**
+- [ ] **152. Maximum Product Subarray**
+
+---
+
+## 7. Sorting / Greedy / Intervals
+
+- [ ] **75. Sort Colors**
+- [ ] **56. Merge Intervals**
+- [ ] **57. Insert Interval**
+- [ ] **435. Non-overlapping Intervals**
+- [ ] **452. Minimum Number of Arrows to Burst Balloons**
+
+---
+
+## 8. Matrix / 2D Arrays
+
+- [ ] **54. Spiral Matrix**
+- [ ] **48. Rotate Image**
+- [ ] **73. Set Matrix Zeroes**
+- [ ] **74. Search a 2D Matrix**
+- [ ] **289. Game of Life**
+
+---
+
+## 9. Advanced Array Problems
+
+- [ ] **42. Trapping Rain Water**
+- [ ] **239. Sliding Window Maximum**
+- [ ] **41. First Missing Positive**
+- [ ] **84. Largest Rectangle in Histogram**
+- [ ] **215. Kth Largest Element in an Array**
+
+---
+
+# How to Use This List
+
+For each problem, record:
+
+### 1. Pattern
+
+What technique does this problem use?
+
+### 2. Observation
+
+What property of the problem allows the technique to work?
+
+### 3. Algorithm
+
+Write the algorithm in your own words before coding.
+
+### 4. Complexity
+
+Record:
+
+```text
+Time:  O(?)
+Space: O(?)
 ```
 
-###  Minimum Size Subarray Sum
+### 5. Mistakes
 
-This template is very common in sliding window problems
+Write down what you got wrong.
 
-```java
-public static int minSubArrayLen(int target, int[] nums) {
-        int left = 0;
-        int sum = 0;
-        int minLen = Integer.MAX_VALUE;
+---
 
-        for (int right = 0; right < nums.length; right++) {
-            sum += nums[right]; //expand window
+# Completion Criteria
 
-            while (sum >= target) { //constraint violated, shrink till valid
-                minLen = Math.min(minLen, right - left + 1);
-                sum -= nums[left];
-                left++;
-            }
-        }
+Don't consider a pattern "complete" just because you solved the problems.
 
-        return minLen == Integer.MAX_VALUE ? 0 : minLen;
-    }
+You should be able to look at a new problem and ask:
+
+```text
+Is this a HashMap problem?
+        ↓
+Can sorting help?
+        ↓
+Can I use two pointers?
+        ↓
+Is this a sliding window?
+        ↓
+Can prefix/suffix information help?
+        ↓
+Is there a running minimum/maximum?
+        ↓
+Is this an interval problem?
+        ↓
+Is this a matrix/indexing problem?
 ```
 
-###  Fruit Into Baskets
+The goal is to build a **pattern library**, not memorize 50 solutions.
 
-```java
-public int totalFruit(int[] fruits) {
-        int l = 0;
-        Map<Integer,Integer> basket = new HashMap<>();
-        int maxSum = 0;
-        for(int r = 0; r < fruits.length; r++){
-            basket.put(fruits[r],basket.getOrDefault(fruits[r],0)+1);
+---
 
-            while(basket.size() > 2){
-                //This the critical part, I was removing entire left fruit. But it has to be decremented by 1
-                basket.put(fruits[l], basket.get(fruits[l]) - 1);
-                if (basket.get(fruits[l]) == 0) {
-                    basket.remove(fruits[l]);
-                }
-                l++;
-            }
-            maxSum = Math.max(maxSum,r-l+1);
-        }
-        return maxSum;
-    }
-```
+# Suggested Priority
 
-###  Longest Repeating Character Replacement
+If time is limited, prioritize these first:
 
-```java
-public int characterReplacement(String s, int k) {
-        int left = 0, maxFreq = 0, answer = 0;
-        int[] freqMap = new int[26];
+### Must Master
 
-        for(int right = 0; right < s.length(); right++){
-            char currentChar = s.charAt(right);
-            freqMap[currentChar-'A']++;
-            maxFreq = Math.max(maxFreq,freqMap[currentChar-'A']);
+- [x] **1. Two Sum**
+- [ ] **121. Best Time to Buy and Sell Stock**
+- [ ] **53. Maximum Subarray**
+- [ ] **26. Remove Duplicates from Sorted Array**
+- [ ] **283. Move Zeroes**
+- [ ] **167. Two Sum II**
+- [ ] **977. Squares of a Sorted Array**
+- [ ] **11. Container With Most Water**
+- [ ] **15. 3Sum**
+- [ ] **238. Product of Array Except Self**
+- [ ] **560. Subarray Sum Equals K**
+- [ ] **209. Minimum Size Subarray Sum**
+- [ ] **75. Sort Colors**
+- [ ] **56. Merge Intervals**
+- [ ] **42. Trapping Rain Water**
 
-            while((right-left+1)-maxFreq > k){
-                freqMap[s.charAt(left)-'A']--;
-                left++;
-            }
-            answer = Math.max(answer,(right-left+1));
-        }
-        return answer;
-    }
-```
-
-###  Minimum Window Substring
-
-
-## Phase 4: Prefix Sum
-
-###  Range Sum Query - Immutable  
-
-###  Subarray Sum Equals K 
-
-###  Continuous Subarray Sum
-
-###  Product of Array Except Self
-
-###  Find Pivot Index
-
-------------------------------------------------------------------------
-
-## Phase 5: Hashing
-
-  Problem                        LeetCode
-  ------------------------------ ----------
-  Contains Duplicate             217
-  Majority Element               169
-  Top K Frequent Elements        347
-  Longest Consecutive Sequence   128
-  Happy Number                   202
-  Intersection of Two Arrays     349
-
-------------------------------------------------------------------------
-
-## Phase 6: Binary Search on Arrays
-
-  Problem                                   LeetCode
-  ----------------------------------------- ----------
-  Binary Search                             704
-  Search Insert Position                    35
-  First Bad Version                         278
-  Search in Rotated Sorted Array            33
-  Find Minimum in Rotated Sorted Array      153
-  Find Peak Element                         162
-  Koko Eating Bananas                       875
-  Capacity To Ship Packages Within D Days   1011
-
-------------------------------------------------------------------------
-
-## Phase 7: Sorting
-
-  Problem                                      LeetCode
-  -------------------------------------------- ----------
-  Sort Colors                                  75
-  Merge Intervals                              56
-  Insert Interval                              57
-  Meeting Rooms *(Premium / Similar)*          252
-  Largest Number                               179
-  Minimum Number of Arrows to Burst Balloons   452
-
-------------------------------------------------------------------------
-
-## Phase 8: Matrix
-
-  Problem                 LeetCode
-  ----------------------- ----------
-  Rotate Image            48
-  Set Matrix Zeroes       73
-  Spiral Matrix           54
-  Spiral Matrix II        59
-  Search a 2D Matrix      74
-  Search a 2D Matrix II   240
-
-------------------------------------------------------------------------
-
-## Phase 9: Kadane's Algorithm
-
-  Problem                         LeetCode
-  ------------------------------- ----------
-  Maximum Subarray                53
-  Maximum Sum Circular Subarray   918
-  Maximum Product Subarray        152
-
-------------------------------------------------------------------------
-
-## Phase 10: Monotonic Stack
-
-  Problem                          LeetCode
-  -------------------------------- ----------
-  Next Greater Element I           496
-  Daily Temperatures               739
-  Online Stock Span                901
-  Largest Rectangle in Histogram   84
-  Trapping Rain Water              42
-
-------------------------------------------------------------------------
-
-## Phase 11: Greedy Arrays
-
-  Problem        LeetCode
-  -------------- ----------
-  Jump Game      55
-  Jump Game II   45
-  Gas Station    134
-  Candy          135
-
-------------------------------------------------------------------------
-
-## Phase 12: Advanced Techniques
-
-  Technique                Recommended Problem
-  ------------------------ ---------------------------
-  Dutch National Flag      75 - Sort Colors
-  Difference Array         1094 - Car Pooling
-  Coordinate Compression   327 - Count of Range Sum
-  Sweep Line               253 - Meeting Rooms II
-  Bucket Sort              164 - Maximum Gap
-  Boyer-Moore Voting       229 - Majority Element II
-
-------------------------------------------------------------------------
-
-## Phase 13: Hard Problems
-
-  Problem                       LeetCode
-  ----------------------------- ----------
-  First Missing Positive        41
-  Trapping Rain Water           42
-  Sliding Window Maximum        239
-  Median of Two Sorted Arrays   4
-  Maximum Gap                   164
-
-------------------------------------------------------------------------
+These give you exposure to most of the important array patterns.
