@@ -6,11 +6,14 @@ import java.io.InputStreamReader;
 import java.util.Map;
 
 /**
- * Alice got a number written in seven segment format where each segment was created used a matchstick.
+ * Alice got a number written in seven segment format where each segment was created
+ * using a matchstick.
  *
- * Example: If Alice gets a number 123 so basically Alice used 2+5+5 = 12 matchsticks for this number.
+ * Example: If Alice gets a number 123 so basically Alice used 2+5+5 = 12 matchsticks
+ * for this number.
  *
- * Alice is wondering what is the numerically largest value that she can generate by using at most
+ * Alice is wondering what is the numerically largest value that she can generate by
+ * using at most
  * the matchsticks that she currently possess.Help Alice out by telling her that number.
  *
  * I/P:
