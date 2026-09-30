@@ -26,7 +26,8 @@ import java.util.Map;
  * 111
  *
  * Logic:
- * 1) We first calculate number of matchsticks by summing up matches for each digit using one to one mapping
+ * 1) We first calculate number of matchsticks by summing up matches for each digit using
+ * one to one mapping
  * 2) For max number using matches. We see below pattern
  *
  * Matchstick -> Max num
