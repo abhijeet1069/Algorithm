@@ -34,7 +34,7 @@ public class BestIndex {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine().trim());
         long[] a = new long[n];
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine()); //split on whitespace by default
         for (int i = 0; i < n; i++) {
             a[i] = Long.parseLong(st.nextToken());
         }
